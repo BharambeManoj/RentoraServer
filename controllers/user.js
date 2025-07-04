@@ -32,7 +32,7 @@ export const SignUp = async(req, res, next) =>{
         });
 
         const createdUser = await user.save();
-        const token = jwt.sign({id: createdUser._id}, process.env.jwt,{expiresIn: "9999 years"});
+        const token = jwt.sign({id: createdUser._id}, process.env.JWT_SECRET,{expiresIn: "9999 years"});
         return res.status(201).json({token,user});
 
     }catch(err){
